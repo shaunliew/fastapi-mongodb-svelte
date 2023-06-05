@@ -8,11 +8,15 @@ from bson import ObjectId
 from typing import Optional, List
 import motor.motor_asyncio
 import uuid
+import uvicorn
 load_dotenv()
 
 MONGODB_URL = os.getenv('MONGODB_URL')
 
 app = FastAPI()
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=5173)
+
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 
 #college is the database name
